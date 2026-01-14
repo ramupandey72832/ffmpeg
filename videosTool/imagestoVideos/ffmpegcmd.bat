@@ -1,0 +1,3 @@
+ffmpeg -f concat -safe 0 -i inputsMJPEG.txt -vsync vfr -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" outputjpeg.mp4
+ffmpeg -f concat -safe 0 -i inputsPNG.txt -vsync vfr -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" outputpng.mp4
+ffmpeg -i outputpng.mp4 -i outputjpeg.mp4 -filter_complex "[0:v]scale=500:500,setdar=1/1[v0]; [1:v]scale=500:500,setdar=1/1[v1]; [v0][v1]concat=n=2:v=1:a=0[v]" -map "[v]" -pix_fmt yuv420p output.mp4
