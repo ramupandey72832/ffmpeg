@@ -1,0 +1,1 @@
+magick *.jpg -auto-orient -quality 30 output.pdf
