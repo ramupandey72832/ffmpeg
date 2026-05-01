@@ -1,0 +1,2 @@
+pdfimages // to extract images from pdf with same density
+magick convert -density 300 input.pdf output-%03d.png // to split 
